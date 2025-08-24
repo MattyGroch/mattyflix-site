@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Mattyflix</title>
+  <meta name="description" content="Everything you need to know to join and enjoy Mattyflix." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class'],
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Nunito', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            mf: {
+              bg: '#171a1f',
+              surface: '#1b1f26',
+              border: '#2a2f38',
+              text: '#ffffff',
+              sub: '#cbd5e1',
+              accent: '#3a4da1',
+              accentDark: '#2e3e82'
+            }
+          },
+          boxShadow: {
+            glow: '0 0 0 3px rgba(58,77,161,.35)'
+          },
+          keyframes: {
+            sheen: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(200%)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' }
+            }
+          },
+          animation: {
+            sheen: 'sheen 2.2s linear infinite',
+            float: 'float 6s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; }
+    body { background: radial-gradient(1200px 600px at 10% -10%, rgba(58,77,161,.10), transparent 60%),
+                   radial-gradient(900px 500px at 90% -20%, rgba(58,77,161,.08), transparent 60%),
+                   #171a1f; color: #ffffff; }
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); backdrop-filter: blur(6px); }
+    .prose-dark h1, .prose-dark h2, .prose-dark h3 { color: #fff; }
+    .prose-dark p, .prose-dark li { color: #cbd5e1; }
+    .ring-focus:focus { box-shadow: 0 0 0 3px rgba(58,77,161,.55); outline: none; }
+    .ratio-16x9 { position: relative; width: 100%; }
+    .ratio-16x9::before { content: ""; display: block; padding-top: 56.25%; } /* 9/16 */
+    .ratio-16x9 > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  </style>
+</head>
+<body class="antialiased selection:bg-mf-accent/20">
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-mF/0">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex items-center justify-between py-4">
+        <a href="#" class="flex items-center gap-3 group">
+          <img src="https://placehold.co/48x48/171a1f/FFFFFF?text=M" alt="Mattyflix logo" class="h-10 w-10 rounded-xl border border-mf-border object-cover" onerror="this.onerror=null;this.src='https://placehold.co/48x48/171a1f/FFFFFF?text=M';"/>
+          <span class="text-xl font-extrabold tracking-tight">Mattyflix</span>
+        </a>
+        <nav class="hidden gap-6 md:flex text-sm">
+          <a href="#getting-started" class="text-mF-sub hover:text-white">Getting started</a>
+          <a href="#requests" class="text-mF-sub hover:text-white">Requests</a>
+          <a href="#faq" class="text-mF-sub hover:text-white">FAQ</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="https://donate.mattyflix.com" target="_blank" class="hidden md:inline-flex items-center rounded-xl border border-mf-border px-4 py-2 text-sm hover:bg-white/5 transition">Donate</a>
+          <a href="#join" class="inline-flex items-center rounded-xl bg-mf-accent px-4 py-2 text-sm font-bold text-white hover:bg-mf-accentDark transition relative overflow-hidden whitespace-nowrap">
+            <span>Join now</span>
+            <span class="pointer-events-none absolute inset-0 -skew-x-12 bg-white/20 animate-sheen"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-mf-border to-transparent"></div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="mx-auto max-w-6xl px-6 pt-12 pb-10 md:pt-16 md:pb-16">
+        <div class="grid items-center gap-10 md:grid-cols-2">
+        <div>
+            <h1 class="text-4xl md:text-6xl font-black leading-[1.05]">
+            Don't pay for streaming,<span class="bg-gradient-to-r from-white via-mF-sub to-white bg-clip-text text-transparent"> join Mattyflix!</span>
+            </h1>
+            <p class="mt-5 text-lg text-mf-sub max-w-prose">Everything you need to join, request titles, and stream like a pro — all in one place.</p>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#join" class="inline-flex items-center gap-2 rounded-2xl bg-mf-accent px-5 py-3 font-bold hover:bg-mf-accentDark transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 100 18 9 9 0 000-18Zm1 9.59V7.5a1 1 0 10-2 0v6a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L13 12.59Z"/></svg>
+                Get started
+            </a>
+            <a href="https://search.mattyflix.com" target="_blank" class="inline-flex items-center gap-2 rounded-2xl border border-mf-border px-5 py-3 font-semibold hover:bg-white/5 transition">
+                Request a title
+            </a>
+            </div>
+            <div class="mt-6 flex items-center gap-3 text-xs text-mf-sub">
+            <span class="inline-flex items-center gap-1 rounded-full bg-white/5 px-2.5 py-1">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                Online
+            </span>
+            <span>Private server • Invite only</span>
+            </div>
+        </div>
+
+        <div class="relative order-first md:order-last">
+            <div class="glass rounded-3xl border border-mf-border p-3 shadow-2xl">
+            <div class="ratio-16x9">
+                <iframe
+                class="rounded-2xl w-full h-full border border-mf-border"
+                src="https://www.youtube.com/embed/bAEy1cJ2g9g"
+                title="Mattyflix Preview"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                loading="lazy"
+                allowfullscreen>
+                </iframe>
+            </div>
+            </div>
+            <div class="absolute -bottom-4 -left-4 hidden md:block">
+            <div class="rounded-2xl bg-mf-accent/20 px-4 py-2 text-sm font-semibold text-white border border-mf-accent/40">
+                No ads • 4K where available
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section id="getting-started" class="relative">
+    <div class="mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div class="glass rounded-2xl border border-mf-border p-6">
+          <div class="flex items-start gap-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-mf-border font-extrabold">1</div>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold">Join with your invite code</h3>
+              <p class="mt-1 text-sm text-mf-sub">Enter the invite code I provided and click Go. Your access will be linked to your Plex account.</p>
+              <form id="join" class="mt-4" onsubmit="return false;">
+                <label for="invite-code" class="sr-only">Invite code</label>
+                <div class="flex items-stretch rounded-2xl bg-black\/20 border border-mf-border focus-within:ring-2 focus-within:ring-mf-accent">
+                  <input id="invite-code" type="text" inputmode="text" autocomplete="off" placeholder="Invite code" class="w-full min-w-0 bg-transparent px-4 py-3 outline-none text-white placeholder:text-mf-sub/70 rounded-l-2xl" />
+                  <button id="join-button" class="flex-none relative inline-flex items-center gap-2 px-5 py-3 bg-mf-accent hover:bg-mf-accentDark font-semibold rounded-r-2xl whitespace-nowrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 100 16 8 8 0 000-16Zm3.707 8.707-3 3a1 1 0 01-1.414-1.414L12.586 12l-1.293-1.293a1 1 0 111.414-1.414l3 3a1 1 0 010 1.414Z"/></svg>
+                    Go
+                  </button>
+                </div>
+                <p id="join-help" class="mt-2 text-xs text-mf-sub">Tip: Press Enter to submit.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl border border-mf-border p-6">
+          <div class="flex items-start gap-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-mf-border font-extrabold">2</div>
+            <div>
+              <h3 class="text-lg font-bold">Install the Plex app</h3>
+              <p class="mt-1 text-sm text-mf-sub">Grab the official app for your device, sign in, and your libraries will appear automatically.</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <a href="https://www.plex.tv/media-server-downloads/#plex-app" target="_blank" class="rounded-xl border-2 border-mf-border bg-white/10 px-3 py-2 text-sm font-semibold hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mf-accent">Desktop & Web</a>
+                <a href="https://apps.apple.com/us/app/plex-movies-tv-music/id383457673" target="_blank" class="rounded-xl border-2 border-mf-border bg-white/10 px-3 py-2 text-sm font-semibold hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mf-accent">iOS</a>
+                <a href="https://play.google.com/store/apps/details?id=com.plexapp.android" target="_blank" class="rounded-xl border-2 border-mf-border bg-white/10 px-3 py-2 text-sm font-semibold hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mf-accent">Android</a>
+                <a href="https://www.plex.tv/apps-devices/" target="_blank" class="rounded-xl border-2 border-mf-border bg-white/10 px-3 py-2 text-sm font-semibold hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mf-accent">All devices</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl border border-mf-border p-6">
+          <div class="flex items-start gap-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-mf-border font-extrabold">3</div>
+            <div>
+              <h3 class="text-lg font-bold">Enjoy!</h3>
+              <p class="mt-1 text-sm text-mf-sub">Browse, play, and manage your watchlist.</p>
+              <p class="mt-1 text-sm text-mf-sub">For best quality, set <em>Remote Streaming Quality</em> to <strong>Original</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features / Requests & Best Practices -->
+  <section id="requests" class="relative">
+    <div class="mx-auto max-w-6xl px-6 pb-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <!-- Requests -->
+        <div class="glass rounded-2xl border border-mf-border p-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-mf-accent/20 text-mF-accent border border-mf-accent/30">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm1 10h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H8a1 1 0 110-2h3V9a1 1 0 112 0v3Z"/></svg>
+            </span>
+            <h2 class="text-2xl font-extrabold">Make a request</h2>
+          </div>
+          <p class="text-mf-sub">Want something that isn’t on the server yet? Use Overseerr to request new movies and TV shows <span class="text-white font-semibold">and to report issues with media</span> (wrong language tracks, missing subtitles, bad metadata, etc.). Track approvals and fixes in real time.</p>
+          <a href="https://search.mattyflix.com" target="_blank" class="mt-4 inline-flex items-center gap-2 rounded-2xl bg-mf-accent px-4 py-2 font-semibold hover:bg-mf-accentDark transition">
+            Go to request system
+          </a>
+        </div>
+        <!-- Best practices -->
+        <div class="glass rounded-2xl border border-mf-border p-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-mf-accent/20 text-mF-accent border border-mf-accent/30">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 2a1 1 0 00-1 1v1H7a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3h-2V3a1 1 0 10-2 0v1h-2V3a1 1 0 00-1-1zM7 8h10v9a1 1 0 01-1 1H8a1 1 0 01-1-1V8z"/></svg>
+            </span>
+            <h2 class="text-2xl font-extrabold">Best practices</h2>
+          </div>
+          <ul class="space-y-2 text-mf-sub">
+            <li><strong class="text-white">Prefer Original quality</strong> for direct play; lower quality only if you see buffering.</li>
+            <li><strong class="text-white">Use Ethernet</strong> or fast Wi‑Fi for the most stable connection.</li>
+            <li><strong class="text-white">Set default language</strong> in Plex: <em>Settings → Audio & Subtitles</em> → Preferred audio language: <strong>English</strong>; Subtitle mode: <strong>Only forced</strong> or <strong>Only for foreign audio</strong>.</li>
+            <li><strong class="text-white">Check subtitles</strong> from the playback menu and pick your preferred track.</li>
+          </ul>
+        </div>
+        <!-- Troubleshooting -->
+        <div class="glass rounded-2xl border border-mf-border p-6 md:col-span-2">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-mf-accent/20 text-mF-accent border border-mf-accent/30">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm1 14.5a1 1 0 10-2 0 1 1 0 002 0zM11 7.5a1 1 0 012 0V12a1 1 0 11-2 0V7.5z"/></svg>
+            </span>
+            <h2 class="text-2xl font-extrabold">Troubleshooting</h2>
+          </div>
+          <div class="grid gap-6 md:grid-cols-3">
+            <div>
+              <h3 class="font-bold">Buffering</h3>
+              <p class="text-mf-sub text-sm">Lower playback quality or check your connection speed.</p>
+            </div>
+            <div>
+              <h3 class="font-bold">Can’t connect</h3>
+              <p class="text-mf-sub text-sm">Make sure you’re signed into the correct Plex account. Try signing out and back in.</p>
+            </div>
+            <div>
+              <h3 class="font-bold">No sound</h3>
+              <p class="text-mf-sub text-sm">Pick the correct audio track in the player’s settings.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's New / Newsletter -->
+  <section class="relative">
+    <div class="mx-auto max-w-6xl px-6 pb-12 md:pb-16">
+      <div class="glass rounded-3xl border border-mf-border p-8 md:p-10 flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-mf-accent/20 text-mF-accent border border-mf-accent/30">
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 00-2 2v14l4-3h12a2 2 0 002-2V5a2 2 0 00-2-2z"/></svg>
+          </span>
+          <h2 class="text-2xl md:text-3xl font-extrabold">What’s new on Mattyflix</h2>
+        </div>
+        <p class="text-mf-sub">See the latest additions in the <a href="https://tautulli.mattyflix.com/newsletter/id/new" class="text-white font-semibold underline decoration-mf-accent/60 underline-offset-4 hover:decoration-white" target="_blank">“New to Mattyflix”</a> report.</p>
+        <p class="text-mf-sub">You’ll also get a weekly email newsletter every <strong>Thursday at 4:00pm ET</strong> with new releases.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="relative">
+    <div class="mx-auto max-w-6xl px-6 pb-12 md:pb-16">
+      <div class="mb-4 flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-mf-accent/20 text-mF-accent border border-mf-accent/30">
+          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm1 14.5a1 1 0 10-2 0 1 1 0 002 0zM11 7.5a1 1 0 012 0c0 1.75 3 1.5 3 4 0 1.657-1.343 3-3 3h-1a1 1 0 110-2h1c.552 0 1-.448 1-1 0-1.25-3-1.5-3-4z"/></svg>
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold">FAQ</h2>
+      </div>
+      <div class="space-y-3">
+        <details class="group rounded-2xl border border-mf-border p-5 open:bg-white/5">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">How do I get an invite code?
+            <span class="transition group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-2 text-mf-sub">I share invite codes directly. If you don’t have one yet, reach out to me and I’ll send one over.</p>
+        </details>
+        <details class="group rounded-2xl border border-mf-border p-5 open:bg-white/5">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">Is Mattyflix free?
+            <span class="transition group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-2 text-mf-sub">Yep. It’s a personal, non-commercial project. Donations help cover storage, bandwidth, and upgrades.</p>
+        </details>
+        <details class="group rounded-2xl border border-mf-border p-5 open:bg-white/5">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">What quality can I expect?
+            <span class="transition group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-2 text-mf-sub">Direct play whenever possible (including 4K where available). For best results, use a wired connection or strong Wi‑Fi.</p>
+        </details>
+        <details class="group rounded-2xl border border-mf-border p-5 open:bg-white/5">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">I want to know how all of this works! Can you tell me more?
+            <span class="transition group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-2 text-mf-sub">Sure! You can head over to <a href="https://faq.mattyflix.com" class="text-white font-semibold underline decoration-mf-accent/60 underline-offset-4 hover:decoration-white" target="_blank">faq.mattyflix.com</a> for an in-depth look at the hardware and software that powers Mattyflix!</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section class="relative">
+    <div class="mx-auto max-w-6xl px-6 pb-16">
+      <div class="glass rounded-3xl border border-mf-border p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="text-2xl font-extrabold">Support Mattyflix</h3>
+          <p class="mt-1 text-mf-sub max-w-prose">If you enjoy the service, consider donating to help cover server costs and future upgrades. Thank you!</p>
+        </div>
+        <a href="https://donate.mattyflix.com" target="_blank" class="inline-flex items-center gap-2 rounded-2xl bg-mf-accent px-5 py-3 font-semibold hover:bg-mf-accentDark transition">
+          Donate now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-4 border-t border-mf-border/80">
+    <div class="mx-auto max-w-6xl px-6 py-10 text-center text-mf-sub">
+      <p>Mattyflix Reference Page • Built for the best users.</p>
+      <p class="text-xs mt-2">Plex and the Plex logo are trademarks of Plex, Inc.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Handle the invite code submission
+    const joinBtn = document.getElementById('join-button');
+    const inviteInput = document.getElementById('invite-code');
+
+    function submitInvite() {
+      const code = (inviteInput?.value || '').trim();
+      if (code) {
+        const url = `https://join.mattyflix.com/j/${encodeURIComponent(code)}`;
+        window.open(url, '_blank');
+      } else if (inviteInput) {
+        inviteInput.classList.add('ring-focus');
+        inviteInput.placeholder = 'Please enter a valid code';
+        setTimeout(() => inviteInput.classList.remove('ring-focus'), 1800);
+      }
+    }
+
+    joinBtn?.addEventListener('click', submitInvite);
+    inviteInput?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        submitInvite();
+      }
+    });
+  </script>
+</body>
+</html>
