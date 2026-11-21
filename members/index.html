@@ -16,103 +16,130 @@
       darkMode: ['class'],
       theme: { extend: {
         fontFamily: { sans: ['Nunito', 'ui-sans-serif', 'system-ui'] },
-        colors: { mf: { bg: '#171a1f', surface: '#1b1f26', border: '#2a2f38', text: '#ffffff', sub: '#cbd5e1', accent: '#3a4da1', accentDark: '#2e3e82' } }
+        colors: { mf: { bg: '#171a1f', surface: '#1f242d', border: '#2f3541', text: '#ffffff', sub: '#d5dce8', muted: '#a7b0c0', accent: '#3a4da1', accentDark: '#2e3e82', accentSoft: '#8fa2ff' } }
       } }
     }
   </script>
   <style>
-    .card { display:block; border-radius:1rem; border:1px solid #2a2f38; background:#1b1f26; padding:1.25rem 1.5rem; transition:border-color .15s; }
-    .card:hover { border-color:#3a4da1; }
-    .card h3 { font-weight:800; }
-    .card p { margin-top:.25rem; color:#cbd5e1; font-size:.95rem; }
-    .card .url { margin-top:.5rem; font-size:.8rem; color:#8b93a7; }
+    .row { display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; border-top:1px solid #2f3541; transition:background .15s; }
+    .row:first-child { border-top:0; }
+    .row:hover { background:rgba(255,255,255,.04); }
+    .row .arrow { margin-left:auto; color:#a7b0c0; flex-shrink:0; }
+    .row:hover .arrow { color:#ffffff; }
+    .ico { width:1.25rem; height:1.25rem; flex-shrink:0; color:#8fa2ff; }
   </style>
 </head>
 <body class="bg-mf-bg text-mf-text antialiased selection:bg-mf-accent/30">
-  <header class="sticky top-0 z-50 border-b border-mf-border/60 bg-mf-bg/80 backdrop-blur">
-    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+  <header class="sticky top-0 z-50 border-b border-mf-border/70 bg-mf-bg/90 backdrop-blur">
+    <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
       <a href="/" class="flex items-center gap-3">
-        <img src="/assets/logo-96.png" alt="" class="h-10 w-10 rounded-xl border border-mf-border" width="96" height="96">
-        <span class="text-xl font-extrabold tracking-tight">Mattyflix</span>
+        <img src="/assets/logo-96.png" alt="" class="h-9 w-9 rounded-xl border border-mf-border" width="96" height="96">
+        <span class="text-lg font-extrabold tracking-tight">Mattyflix</span>
       </a>
-      <nav class="flex items-center gap-3 text-sm">
-        <a href="#watch" class="hidden text-mf-sub hover:text-white sm:inline">Watch</a>
-        <a href="#request" class="hidden text-mf-sub hover:text-white sm:inline">Request</a>
-        <a href="#community" class="hidden text-mf-sub hover:text-white sm:inline">Community</a>
-        <a href="#help" class="hidden text-mf-sub hover:text-white sm:inline">Help</a>
-        <a href="https://donate.mattyflix.com" class="rounded-xl border border-mf-border px-4 py-2 hover:bg-white/5">Donate</a>
-      </nav>
+      <a href="https://donate.mattyflix.com" class="rounded-xl border border-mf-border px-4 py-2 text-sm font-semibold hover:bg-white/5">Donate</a>
     </div>
   </header>
 
-  <main class="mx-auto max-w-5xl px-6 pb-20">
-    <section class="pb-6 pt-14">
+  <main class="mx-auto max-w-3xl px-5 pb-20">
+    <section class="pb-8 pt-12">
       <h1 class="text-3xl font-black sm:text-4xl">Member links</h1>
-      <p class="mt-3 max-w-2xl text-mf-sub">Everything you might want as a Mattyflix member, in one place. Bookmark this page. Most of these sign you in with your Plex account.</p>
+      <p class="mt-3 text-lg text-mf-sub">Everything you need, in one place. Bookmark this page.</p>
     </section>
 
-    <section id="watch" class="py-8">
-      <h2 class="mb-4 text-xl font-extrabold">Watch</h2>
-      <div class="grid gap-4 md:grid-cols-3">
-        <a class="card" href="https://app.plex.tv/desktop/#!/"><h3>Open Plex</h3><p>Watch in your browser right now.</p><p class="url">app.plex.tv</p></a>
-        <a class="card" href="https://www.plex.tv/media-server-downloads/#plex-app"><h3>Get the Plex app</h3><p>TVs, streaming boxes, phones, consoles and computers.</p><p class="url">plex.tv</p></a>
-        <a class="card" href="https://new.mattyflix.com"><h3>What's new</h3><p>This week's newsletter of new additions. It also arrives by email every Thursday.</p><p class="url">new.mattyflix.com</p></a>
+    <!-- The four things people want most -->
+    <section class="grid gap-3 sm:grid-cols-2">
+      <a href="https://app.plex.tv/desktop/#!/" class="group flex items-center gap-4 rounded-2xl bg-mf-accent p-5 hover:bg-mf-accentDark">
+        <svg class="h-7 w-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        <div><div class="text-lg font-extrabold">Watch on Plex</div><div class="text-sm text-white/85">Open Plex in your browser</div></div>
+      </a>
+      <a href="https://search.mattyflix.com" class="group flex items-center gap-4 rounded-2xl border border-mf-border bg-mf-surface p-5 hover:border-mf-accentSoft">
+        <svg class="h-7 w-7 shrink-0 text-mf-accentSoft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div><div class="text-lg font-extrabold">Mattyflix Search</div><div class="text-sm text-mf-sub">Request movies and shows</div></div>
+      </a>
+      <a href="https://stats.mattyflix.com" class="group flex items-center gap-4 rounded-2xl border border-mf-border bg-mf-surface p-5 hover:border-mf-accentSoft">
+        <svg class="h-7 w-7 shrink-0 text-mf-accentSoft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="12"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="9"/></svg>
+        <div><div class="text-lg font-extrabold">Your stats</div><div class="text-sm text-mf-sub">Watch history and what's playing</div></div>
+      </a>
+      <a href="https://discord.gg/YFapuevaD8" class="group flex items-center gap-4 rounded-2xl border border-mf-border bg-mf-surface p-5 hover:border-mf-accentSoft">
+        <svg class="h-7 w-7 shrink-0 text-mf-accentSoft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div><div class="text-lg font-extrabold">Discord</div><div class="text-sm text-mf-sub">Help, chat and what's new</div></div>
+      </a>
+    </section>
+
+    <!-- More links -->
+    <section class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">More links</h2>
+      <div class="overflow-hidden rounded-2xl border border-mf-border bg-mf-surface">
+        <a class="row" href="https://www.plex.tv/media-server-downloads/#plex-app">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <div><div class="font-bold">Get the Plex app</div><div class="text-mf-sub">For your TV, phone, console or computer</div></div>
+          <span class="arrow">&rsaquo;</span>
+        </a>
+        <a class="row" href="https://new.mattyflix.com">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+          <div><div class="font-bold">What's new this week</div><div class="text-mf-sub">The weekly newsletter. It also arrives by email every Thursday.</div></div>
+          <span class="arrow">&rsaquo;</span>
+        </a>
+        <a class="row" href="https://search.mattyflix.com/profile/settings">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          <div><div class="font-bold">Request from your Plex Watchlist</div><div class="text-mf-sub">Turn on Auto-Request Movies and Series in your Mattyflix Search settings</div></div>
+          <span class="arrow">&rsaquo;</span>
+        </a>
+        <a class="row" href="https://search.mattyflix.com/profile/settings/notifications/discord">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+          <div><div class="font-bold">Link your Discord</div><div class="text-mf-sub">Unlocks the full Discord server and request notifications</div></div>
+          <span class="arrow">&rsaquo;</span>
+        </a>
+        <a class="row" href="https://rewind.mattyflix.com">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 19 2 12 11 5 11 19"/><polygon points="22 19 13 12 22 5 22 19"/></svg>
+          <div><div class="font-bold">Mattyflix Rewind</div><div class="text-mf-sub">Your year in movies and shows, every December</div></div>
+          <span class="arrow">&rsaquo;</span>
+        </a>
+        <a class="row" href="https://faq.mattyflix.com">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div><div class="font-bold">Mattyflix FAQ</div><div class="text-mf-sub">How Mattyflix works behind the scenes</div></div>
+          <span class="arrow">&rsaquo;</span>
+        </a>
+        <a class="row" href="https://support.plex.tv">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <div><div class="font-bold">Plex support</div><div class="text-mf-sub">Official guides for every Plex app and device</div></div>
+          <span class="arrow">&rsaquo;</span>
+        </a>
       </div>
     </section>
 
-    <section id="request" class="py-8">
-      <h2 class="mb-4 text-xl font-extrabold">Request</h2>
-      <div class="grid gap-4 md:grid-cols-3">
-        <a class="card" href="https://search.mattyflix.com"><h3>Mattyflix Search</h3><p>Request movies and shows, and report problems with something already here.</p><p class="url">search.mattyflix.com</p></a>
-        <a class="card" href="https://search.mattyflix.com/profile/settings"><h3>Watchlist requests</h3><p>Turn on Auto-Request Movies and Series, and anything you add to your Plex Watchlist gets requested.</p><p class="url">search.mattyflix.com</p></a>
-        <div class="card"><h3>How requests work</h3><p>Movies are approved automatically and are usually ready within a day. Shows are reviewed by us first.</p></div>
+    <!-- How requests work -->
+    <section class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">How requests work</h2>
+      <div class="rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p><b class="text-white">Movies</b> are approved automatically and are usually ready within a day.</p>
+        <p class="mt-2"><b class="text-white">Shows</b> are reviewed by us first, so they take a little longer.</p>
+        <p class="mt-2">Something already here has a problem? Report it from its page on Mattyflix Search.</p>
       </div>
     </section>
 
-    <section id="community" class="py-8">
-      <h2 class="mb-4 text-xl font-extrabold">Community and stats</h2>
-      <div class="grid gap-4 md:grid-cols-3">
-        <a class="card" href="https://discord.gg/YFapuevaD8"><h3>Discord</h3><p>Help, what's playing, and everyone else who watches here.</p><p class="url">discord.gg</p></a>
-        <a class="card" href="https://search.mattyflix.com/profile/settings/notifications/discord"><h3>Link your Discord</h3><p>Unlocks the full Discord server and lets us ping you when your requests are ready.</p><p class="url">search.mattyflix.com</p></a>
-        <a class="card" href="https://stats.mattyflix.com"><h3>Your stats</h3><p>Your watch history and stats, plus what's playing on the server right now. Sign in with Plex.</p><p class="url">stats.mattyflix.com</p></a>
-        <a class="card" href="https://rewind.mattyflix.com"><h3>Mattyflix Rewind</h3><p>Your year in movies and shows. Best enjoyed every December.</p><p class="url">rewind.mattyflix.com</p></a>
+    <!-- Tips -->
+    <section class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">Tips and quick fixes</h2>
+      <div class="rounded-2xl border border-mf-border bg-mf-surface p-6">
+        <dl class="space-y-4 text-mf-sub">
+          <div><dt class="font-bold text-white">Picture looks soft or blurry</dt><dd>In the Plex app's settings, set streaming quality to Original (or Maximum).</dd></div>
+          <div><dt class="font-bold text-white">Buffering</dt><dd>Lower the quality for that stream. For 4K on a TV, a wired connection beats Wi-Fi.</dd></div>
+          <div><dt class="font-bold text-white">Can't find Mattyflix in Plex</dt><dd>Make sure you're signed in to the same Plex account you accepted your invite with.</dd></div>
+          <div><dt class="font-bold text-white">Wrong language or no subtitles</dt><dd>Pick the audio or subtitle track from the player's settings.</dd></div>
+          <div><dt class="font-bold text-white">Movies start with trailers</dt><dd>Turn off Cinema Trailers in the Plex app's settings.</dd></div>
+          <div><dt class="font-bold text-white">Still stuck?</dt><dd>Ask in the <a href="https://discord.gg/YFapuevaD8" class="text-mf-accentSoft underline underline-offset-2">Discord</a>.</dd></div>
+        </dl>
       </div>
     </section>
 
-    <section id="help" class="py-8">
-      <h2 class="mb-4 text-xl font-extrabold">Help and tips</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <div class="card">
-          <h3>Getting the best picture</h3>
-          <ul class="mt-2 list-disc space-y-1 pl-5 text-mf-sub">
-            <li>Set streaming quality to <b class="text-white">Original</b> (or Maximum) in the Plex app's settings.</li>
-            <li>Buffering? Lower the quality for that stream. It's the quickest fix.</li>
-            <li>For 4K on a TV, a wired connection beats Wi-Fi.</li>
-            <li>Turn off cinema trailers so movies start right away.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Common fixes</h3>
-          <ul class="mt-2 list-disc space-y-1 pl-5 text-mf-sub">
-            <li><b class="text-white">Can't see Mattyflix?</b> Make sure you're signed in to the same Plex account you accepted the invite with.</li>
-            <li><b class="text-white">Wrong language or no subtitles?</b> Pick the audio or subtitle track from the player's settings.</li>
-            <li><b class="text-white">Still stuck?</b> Ask in the Discord, or report it on Mattyflix Search.</li>
-          </ul>
-        </div>
-        <a class="card" href="https://support.plex.tv"><h3>Plex support</h3><p>Official guides for every Plex app and device.</p><p class="url">support.plex.tv</p></a>
-        <a class="card" href="https://faq.mattyflix.com"><h3>Mattyflix FAQ</h3><p>How Mattyflix works behind the scenes.</p><p class="url">faq.mattyflix.com</p></a>
-      </div>
-    </section>
-
-    <section class="py-8">
-      <div class="rounded-2xl border border-mf-border bg-mf-surface p-6 text-center">
-        <p class="text-mf-sub">Mattyflix is a personal, non-commercial project. If you enjoy it, a donation helps cover drives, power and upgrades.</p>
-        <a href="https://donate.mattyflix.com" class="mt-4 inline-block rounded-xl bg-mf-accent px-6 py-3 font-bold hover:bg-mf-accentDark">Donate</a>
-      </div>
+    <section class="mt-12 rounded-2xl border border-mf-border bg-mf-surface p-6 text-center">
+      <p class="text-mf-sub">Mattyflix is a personal, non-commercial project. If you enjoy it, a donation helps cover drives, power and upgrades.</p>
+      <a href="https://donate.mattyflix.com" class="mt-4 inline-block rounded-xl bg-mf-accent px-6 py-3 font-bold hover:bg-mf-accentDark">Donate</a>
     </section>
   </main>
 
-  <footer class="border-t border-mf-border/60 py-8 text-center text-sm text-mf-sub">
+  <footer class="border-t border-mf-border/70 py-8 text-center text-sm text-mf-muted">
     <a href="/" class="hover:text-white">Mattyflix</a> &middot; Plex and the Plex logo are trademarks of Plex, Inc.
   </footer>
 </body>
