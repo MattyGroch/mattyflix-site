@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Member links - Mattyflix</title>
+  <meta name="description" content="Everything Mattyflix members use, in one place.">
+  <link rel="icon" href="/assets/logo-96.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class'],
+      theme: { extend: {
+        fontFamily: { sans: ['Nunito', 'ui-sans-serif', 'system-ui'] },
+        colors: { mf: { bg: '#171a1f', surface: '#1b1f26', border: '#2a2f38', text: '#ffffff', sub: '#cbd5e1', accent: '#3a4da1', accentDark: '#2e3e82' } }
+      } }
+    }
+  </script>
+  <style>
+    .card { display:block; border-radius:1rem; border:1px solid #2a2f38; background:#1b1f26; padding:1.25rem 1.5rem; transition:border-color .15s; }
+    .card:hover { border-color:#3a4da1; }
+    .card h3 { font-weight:800; }
+    .card p { margin-top:.25rem; color:#cbd5e1; font-size:.95rem; }
+    .card .url { margin-top:.5rem; font-size:.8rem; color:#8b93a7; }
+  </style>
+</head>
+<body class="bg-mf-bg text-mf-text antialiased selection:bg-mf-accent/30">
+  <header class="sticky top-0 z-50 border-b border-mf-border/60 bg-mf-bg/80 backdrop-blur">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/assets/logo-96.png" alt="" class="h-10 w-10 rounded-xl border border-mf-border" width="96" height="96">
+        <span class="text-xl font-extrabold tracking-tight">Mattyflix</span>
+      </a>
+      <nav class="flex items-center gap-3 text-sm">
+        <a href="#watch" class="hidden text-mf-sub hover:text-white sm:inline">Watch</a>
+        <a href="#request" class="hidden text-mf-sub hover:text-white sm:inline">Request</a>
+        <a href="#community" class="hidden text-mf-sub hover:text-white sm:inline">Community</a>
+        <a href="#help" class="hidden text-mf-sub hover:text-white sm:inline">Help</a>
+        <a href="https://donate.mattyflix.com" class="rounded-xl border border-mf-border px-4 py-2 hover:bg-white/5">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-6 pb-20">
+    <section class="pb-6 pt-14">
+      <h1 class="text-3xl font-black sm:text-4xl">Member links</h1>
+      <p class="mt-3 max-w-2xl text-mf-sub">Everything you might want as a Mattyflix member, in one place. Bookmark this page. Most of these sign you in with your Plex account.</p>
+    </section>
+
+    <section id="watch" class="py-8">
+      <h2 class="mb-4 text-xl font-extrabold">Watch</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        <a class="card" href="https://app.plex.tv/desktop/#!/"><h3>Open Plex</h3><p>Watch in your browser right now.</p><p class="url">app.plex.tv</p></a>
+        <a class="card" href="https://www.plex.tv/media-server-downloads/#plex-app"><h3>Get the Plex app</h3><p>TVs, streaming boxes, phones, consoles and computers.</p><p class="url">plex.tv</p></a>
+        <a class="card" href="https://new.mattyflix.com"><h3>What's new</h3><p>This week's newsletter of new additions. It also arrives by email every Thursday.</p><p class="url">new.mattyflix.com</p></a>
+      </div>
+    </section>
+
+    <section id="request" class="py-8">
+      <h2 class="mb-4 text-xl font-extrabold">Request</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        <a class="card" href="https://search.mattyflix.com"><h3>Mattyflix Search</h3><p>Request movies and shows, and report problems with something already here.</p><p class="url">search.mattyflix.com</p></a>
+        <a class="card" href="https://search.mattyflix.com/profile/settings"><h3>Watchlist requests</h3><p>Turn on Auto-Request Movies and Series, and anything you add to your Plex Watchlist gets requested.</p><p class="url">search.mattyflix.com</p></a>
+        <div class="card"><h3>How requests work</h3><p>Movies are approved automatically and are usually ready within a day. Shows are reviewed by us first.</p></div>
+      </div>
+    </section>
+
+    <section id="community" class="py-8">
+      <h2 class="mb-4 text-xl font-extrabold">Community and stats</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        <a class="card" href="https://discord.gg/YFapuevaD8"><h3>Discord</h3><p>Help, what's playing, and everyone else who watches here.</p><p class="url">discord.gg</p></a>
+        <a class="card" href="https://search.mattyflix.com/profile/settings/notifications/discord"><h3>Link your Discord</h3><p>Unlocks the full Discord server and lets us ping you when your requests are ready.</p><p class="url">search.mattyflix.com</p></a>
+        <a class="card" href="https://tautulli.mattyflix.com"><h3>Your watch history</h3><p>See what you've watched and your own stats. Only you can see yours.</p><p class="url">tautulli.mattyflix.com</p></a>
+        <a class="card" href="https://rewind.mattyflix.com"><h3>Mattyflix Rewind</h3><p>Your year in movies and shows. Best enjoyed every December.</p><p class="url">rewind.mattyflix.com</p></a>
+      </div>
+    </section>
+
+    <section id="help" class="py-8">
+      <h2 class="mb-4 text-xl font-extrabold">Help and tips</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="card">
+          <h3>Getting the best picture</h3>
+          <ul class="mt-2 list-disc space-y-1 pl-5 text-mf-sub">
+            <li>Set streaming quality to <b class="text-white">Original</b> (or Maximum) in the Plex app's settings.</li>
+            <li>Buffering? Lower the quality for that stream. It's the quickest fix.</li>
+            <li>For 4K on a TV, a wired connection beats Wi-Fi.</li>
+            <li>Turn off cinema trailers so movies start right away.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Common fixes</h3>
+          <ul class="mt-2 list-disc space-y-1 pl-5 text-mf-sub">
+            <li><b class="text-white">Can't see Mattyflix?</b> Make sure you're signed in to the same Plex account you accepted the invite with.</li>
+            <li><b class="text-white">Wrong language or no subtitles?</b> Pick the audio or subtitle track from the player's settings.</li>
+            <li><b class="text-white">Still stuck?</b> Ask in the Discord, or report it on Mattyflix Search.</li>
+          </ul>
+        </div>
+        <a class="card" href="https://support.plex.tv"><h3>Plex support</h3><p>Official guides for every Plex app and device.</p><p class="url">support.plex.tv</p></a>
+        <a class="card" href="https://faq.mattyflix.com"><h3>Mattyflix FAQ</h3><p>How Mattyflix works behind the scenes.</p><p class="url">faq.mattyflix.com</p></a>
+      </div>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-2xl border border-mf-border bg-mf-surface p-6 text-center">
+        <p class="text-mf-sub">Mattyflix is a personal, non-commercial project. If you enjoy it, a donation helps cover drives, power and upgrades.</p>
+        <a href="https://donate.mattyflix.com" class="mt-4 inline-block rounded-xl bg-mf-accent px-6 py-3 font-bold hover:bg-mf-accentDark">Donate</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-mf-border/60 py-8 text-center text-sm text-mf-sub">
+    <a href="/" class="hover:text-white">Mattyflix</a> &middot; Plex and the Plex logo are trademarks of Plex, Inc.
+  </footer>
+</body>
+</html>
