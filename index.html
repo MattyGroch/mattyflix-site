@@ -37,13 +37,31 @@
   </header>
 
   <main>
-    <section class="mx-auto max-w-5xl px-6 pb-16 pt-20 text-center">
-      <img src="https://assets.mattyflix.com/mattyflix-logo.png" alt="Mattyflix" class="mx-auto mb-10 w-72 max-w-full">
-      <h1 class="text-4xl font-black leading-tight sm:text-5xl">A private media server<br class="hidden sm:inline"> for friends and family</h1>
-      <p class="mx-auto mt-5 max-w-2xl text-lg text-mf-sub">Movies, shows, anime, stand-up and music, streamed through Plex to nearly any device. No ads, no subscription, invite only.</p>
-      <div class="mt-9 flex flex-wrap justify-center gap-3">
-        <a href="/members/" class="rounded-2xl bg-mf-accent px-6 py-3 font-bold hover:bg-mf-accentDark">Already a member? Go to member links</a>
-        <a href="#join" class="rounded-2xl border border-mf-border px-6 py-3 font-bold hover:bg-white/5">How to join</a>
+    <section class="mx-auto max-w-5xl px-6 pb-16 pt-16">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div class="text-center md:text-left">
+          <img src="https://assets.mattyflix.com/mattyflix-logo.png" alt="Mattyflix" class="mx-auto mb-8 w-64 max-w-full md:mx-0">
+          <h1 class="text-4xl font-black leading-tight sm:text-5xl">A private media server for friends and family</h1>
+          <p class="mt-5 text-lg text-mf-sub">Movies, shows, anime, stand-up and music, streamed through Plex to nearly any device. No ads, no subscription, invite only.</p>
+          <div class="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+            <a href="/members/" class="rounded-2xl bg-mf-accent px-6 py-3 font-bold hover:bg-mf-accentDark">Member links</a>
+            <a href="#join" class="rounded-2xl border border-mf-border px-6 py-3 font-bold hover:bg-white/5">How to join</a>
+          </div>
+        </div>
+        <div class="relative order-first md:order-last">
+          <div class="rounded-3xl border border-mf-border bg-mf-surface p-3 shadow-2xl">
+            <div class="relative w-full overflow-hidden rounded-2xl border border-mf-border" style="aspect-ratio: 16 / 9;">
+              <iframe class="absolute inset-0 h-full w-full"
+                      src="https://www.youtube.com/embed/bAEy1cJ2g9g"
+                      title="Mattyflix Preview"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      loading="lazy" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 -left-4 hidden rounded-2xl border border-mf-accent/40 bg-mf-accent/20 px-4 py-2 text-sm font-semibold backdrop-blur md:block">
+            No ads &middot; 4K where available
+          </div>
+        </div>
       </div>
     </section>
 
