@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Mattyflix works - Mattyflix</title>
+  <meta name="description" content="The hardware, software and automation behind Mattyflix.">
+  <link rel="icon" href="/assets/logo-96.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class'],
+      theme: { extend: {
+        fontFamily: { sans: ['Nunito', 'ui-sans-serif', 'system-ui'] },
+        colors: { mf: { bg: '#171a1f', surface: '#1f242d', border: '#2f3541', text: '#ffffff', sub: '#d5dce8', muted: '#a7b0c0', accent: '#3a4da1', accentDark: '#2e3e82', accentSoft: '#8fa2ff' } }
+      } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 5.5rem; }
+    .prose p { margin-top: 1rem; }
+    .prose p:first-child { margin-top: 0; }
+    .prose ul, .prose ol { margin-top: 1rem; padding-left: 1.25rem; }
+    .prose ul { list-style: disc; }
+    .prose ol { list-style: decimal; }
+    .prose li { margin-top: .5rem; }
+    .prose li::marker { color: #8fa2ff; }
+    .prose b, .prose strong { color: #ffffff; }
+    .prose a { color: #8fa2ff; text-decoration: underline; text-underline-offset: 2px; }
+    .spec { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1.25rem; margin-top: 1rem; }
+    .spec dt { color: #a7b0c0; }
+    .spec dd { margin: 0; color: #ffffff; }
+    .app { padding: .9rem 0; border-top: 1px solid #2f3541; }
+    .app:first-child { border-top: 0; padding-top: 0; }
+    .app h4 { color: #ffffff; font-weight: 800; }
+  </style>
+</head>
+<body class="bg-mf-bg text-mf-text antialiased selection:bg-mf-accent/30">
+  <header class="sticky top-0 z-50 border-b border-mf-border/70 bg-mf-bg/90 backdrop-blur">
+    <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/assets/logo-96.png" alt="" class="h-9 w-9 rounded-xl border border-mf-border" width="96" height="96">
+        <span class="text-lg font-extrabold tracking-tight">Mattyflix</span>
+      </a>
+      <a href="/members/" class="rounded-xl border border-mf-border px-4 py-2 text-sm font-semibold hover:bg-white/5">Member links</a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-5 pb-20">
+    <section class="pb-8 pt-12">
+      <h1 class="text-3xl font-black sm:text-4xl">How Mattyflix works</h1>
+      <p class="mt-3 text-lg text-mf-sub">The hardware, the software and the automation behind it, for anyone who's curious.</p>
+      <nav class="mt-6 flex flex-wrap gap-2 text-sm font-semibold" aria-label="On this page">
+        <a href="#summary" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">The summary</a>
+        <a href="#hardware" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">The hardware</a>
+        <a href="#server" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">The server</a>
+        <a href="#apps" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">The apps</a>
+        <a href="#process" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">The process</a>
+        <a href="#extras" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">The extras</a>
+        <a href="#conclusion" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">The conclusion</a>
+      </nav>
+    </section>
+
+    <section id="summary" class="mt-4">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">The summary</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p>I've had a handful of friends ask me what all goes into Mattyflix, so I've decided to take some time and air it all out. This isn't meant to be a step-by-step guide to replicating it, but it will show you all of the inner workings so you know where to start looking.</p>
+        <p class="text-sm text-mf-muted">Last updated November 2026, after moving everything onto a new server.</p>
+      </div>
+    </section>
+
+    <section id="hardware" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">The hardware</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <!-- CHECK (Matt): NAS models, drive counts and RAID types. Sizes below are the usable volume sizes as of 2026-11-21. -->
+        <p><b>Storage.</b> The media lives on three NAS units with roughly 150 TB of usable space between them (about 55 TB, 86 TB and 13 TB), and a fourth NAS called "dumptruck" holds backups of everything else. Each one shares its media folder to the server over the network.</p>
+        <!-- CHECK (Matt): is the uplink and internet speed still accurate? -->
+        <p><b>Networking.</b> A UniFi Dream Machine Pro handles all of the networking: VLANs, the firewall, port forwarding and the wireless access points. Below it, a 24-port PoE UniFi switch powers the access points around the house and connects everything in the rack. The servers sit on their own VLAN, separate from the rest of the house.</p>
+        <p><b>The Mattyflix server.</b> In November 2026, Mattyflix moved off the old HP ProLiant DL380 G6 (well over a decade old, and showing it) onto a new, much smaller and quieter 2U box:</p>
+        <dl class="spec">
+          <dt>CPU</dt><dd>Intel Core i5-12400, 6 cores / 12 threads</dd>
+          <dt>Graphics</dt><dd>Intel UHD 730 (Quick Sync), used for transcoding</dd>
+          <dt>Memory</dt><dd>32 GB DDR4</dd>
+          <dt>Storage</dt><dd>1 TB NVMe SSD (ZFS)</dd>
+        </dl>
+        <p>It uses a fraction of the power of the old server and transcodes far better. The trick is the Intel graphics built into the CPU: Quick Sync can convert several 4K streams at once while the processor barely notices.</p>
+        <!-- CHECK (Matt): describe what the G8 runs, if you want it mentioned. -->
+        <p>Further down the rack, an HP ProLiant DL380p G8 runs game servers, which don't have anything to do with Mattyflix.</p>
+      </div>
+    </section>
+
+    <section id="server" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">The server</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p>The new box runs <b>Proxmox VE</b>, a hypervisor that lets one machine run several isolated systems. Mattyflix is split into two of them:</p>
+        <ul>
+          <li><b>Plex</b> runs in its own lightweight container (4 cores, 8 GB of memory) with direct access to the Intel graphics for hardware transcoding, including newer formats like AV1. Transcoding is what lets Plex squeeze a 4K movie through my upload bandwidth: it converts the video on the fly to whatever quality your connection can handle. Temporary transcode files go on the fast SSD, and the media itself is read straight from the NAS units.</li>
+          <li><b>Everything else</b> runs in a Debian virtual machine (4 cores, 12 GB of memory) as Docker containers, around 40 of them. Each app's configuration lives in GitHub, and <b>Portainer</b> deploys it from there, so rebuilding a service is a few clicks instead of an afternoon.</li>
+        </ul>
+        <p>Both are backed up every night to the dumptruck NAS, with a week of daily copies and a month of weekly ones.</p>
+        <p><b>Traefik</b> is the front door. It's a reverse proxy: every Mattyflix address, like search.mattyflix.com, comes into Traefik, which sends it to the right app and handles the HTTPS certificates. Adding a new app to Mattyflix means adding a few labels to its container, and Traefik picks it up on its own. The domain's DNS runs through Cloudflare, which keeps the addresses pointed at home even when my IP address changes.</p>
+      </div>
+    </section>
+
+    <section id="apps" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">The apps</h2>
+      <div class="rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <div class="app"><h4>Plex</h4><p>The star of the show: it organizes the library and streams it to every device.</p></div>
+        <div class="app"><h4>Mattyflix Search (Seerr)</h4><p>Where members sign in with their Plex account and request movies and shows. Requests go straight to Radarr and Sonarr.</p></div>
+        <div class="app"><h4>Radarr, Sonarr and Lidarr</h4><p>The librarians for movies, TV and music. They search for what's been requested, hand it off to be downloaded, then rename and file it where Plex expects it.</p></div>
+        <div class="app"><h4>SABnzbd</h4><p>The downloader. It pulls from Usenet (more on that below). Movies, shows and music each get their own instance, writing to their own NAS, so one big download doesn't hold up the others.</p></div>
+        <div class="app"><h4>Prowlarr</h4><p>Manages the indexers (the search engines for Usenet) in one place and shares them with Radarr, Sonarr and Lidarr.</p></div>
+        <div class="app"><h4>Bazarr</h4><p>Finds subtitles for everything.</p></div>
+        <div class="app"><h4>Kometa</h4><p>Builds the collections and keeps posters and artwork looking consistent.</p></div>
+        <div class="app"><h4>Maintainerr</h4><p>The cleanup crew. Things nobody has watched in a long time go into a "Leaving Soon" collection for about 30 days before they're removed, which keeps the drives from filling up.</p></div>
+        <div class="app"><h4>Tracearr and Tautulli</h4><p>Stats and monitoring. Members can see their own watch history on <a class="text-mf-accentSoft underline underline-offset-2" href="https://stats.mattyflix.com">stats.mattyflix.com</a>. Tautulli sends the weekly "what's new" newsletter and feeds the server stats in the Discord.</p></div>
+        <div class="app"><h4>Wizarr</h4><p>Handles invites and walks new members through getting set up.</p></div>
+        <div class="app"><h4>Plex Rewind</h4><p>Your year in movies and shows, every December.</p></div>
+        <div class="app"><h4>A few custom Discord bots</h4><p>For example, one keeps the Discord's Member role in sync with who has access to Plex.</p></div>
+      </div>
+    </section>
+
+    <section id="process" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">The process</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p><b>Q: So how does it all work?</b></p>
+        <p><b>A:</b> Black magic, powered by demons.</p>
+        <p>Joking, but only sort of. Mattyflix gets its media from Usenet, which takes two things:</p>
+        <ul>
+          <li>Access to Usenet</li>
+          <li>Access to an indexer</li>
+        </ul>
+        <p><b>Usenet access isn't free.</b> You pay a Usenet provider, and the price depends on what you get: retention (how far back the post history goes), connections (how many downloads can run at once, which means speed), bandwidth (how much you're allowed to read) and which newsgroups you can reach.</p>
+        <p>Think of Usenet as a set of very old-school forums, where every post is raw binary data for part of a file. SABnzbd "reads" those posts, saves them and stitches them back together. It isn't just downloading a file called "Toy Story (1995) [1080p].mkv". Unlike torrenting, nothing is ever uploaded or shared back out.</p>
+        <p><b>You also need an indexer</b>, which maps out the newsgroups and tells you which posts make up the thing you want. It's a bit like a torrent search site: it doesn't host anything itself, it just tells you where to find it. Some indexers are free with a daily limit on searches, and paying (usually around $10 a year) raises or removes it.</p>
+        <p>Put it together, and here's what happens when someone requests something on Mattyflix Search:</p>
+        <ol>
+          <li>Movies are approved automatically. Shows wait for me to approve them first.</li>
+          <li>The request is added to Radarr (movies) or Sonarr (shows).</li>
+          <li>Radarr or Sonarr searches every indexer through Prowlarr.</li>
+          <li>If it finds a good match, it sends it to SABnzbd, and keeps an eye on the progress.</li>
+          <li>When the download finishes, Radarr or Sonarr renames it and moves it into the right folder.</li>
+          <li>Then it tells Plex to scan for the new arrival, and it shows up in the library.</li>
+        </ol>
+        <p>The whole thing usually takes a few minutes, depending on the size of the file.</p>
+      </div>
+    </section>
+
+    <section id="extras" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">The extras</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p>All of that is nice, but does that mean someone has to request every single movie? Nope.</p>
+        <!-- CHECK (Matt): are the Radarr lists still set up like this? -->
+        <p>Radarr also supports lists. The community has built all kinds of them, and I've subscribed to a few. IMDb has a "Highly Anticipated Movies" list, for example: anything that shows up on it gets added to Radarr and grabbed as soon as it's available. Nobody has to think about it. Radarr has been patiently waiting for Avatar 4 and 5 for years.</p>
+        <p>Members can do the same thing with their Plex Watchlist: turn on auto-requests in Mattyflix Search, and anything added to the Watchlist gets requested automatically.</p>
+        <!-- CHECK (Matt): true once Maintainerr rule group 4 is switched from review mode to live. -->
+        <p>Some shows that never end, like late-night shows and Jeopardy!, only keep their latest season around. Older seasons go through Leaving Soon like everything else, so they don't take over the drives.</p>
+      </div>
+    </section>
+
+    <section id="conclusion" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">The conclusion</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p>I'd been doing this on a small scale for years, using a Raspberry Pi as the server and a 5 TB external hard drive on USB 2.0. It wasn't until the pandemic hit and Comcast removed its data caps that I decided to take the time to do it "the right way".</p>
+        <p>Overall, what I spend on Usenet access, electricity and upkeep is probably more than paying for one or two streaming services. But there aren't just one or two anymore. I was perfectly happy paying for the convenience of a legitimate setup, but the cost has outgrown the convenience. I did all of this not only to avoid paying for a dozen streaming services every month, but to keep my skills fresh: server administration, networking, proxies, Docker, Linux and more. And with all the work I'd put in, I figured my friends and family might as well benefit from it too.</p>
+      </div>
+    </section>
+
+    <section class="mt-12 grid gap-3 sm:grid-cols-3">
+      <a href="https://new.mattyflix.com" class="rounded-2xl border border-mf-border bg-mf-surface p-5 hover:border-mf-accentSoft"><div class="font-extrabold">What's new</div><div class="text-sm text-mf-sub">This week's newsletter</div></a>
+      <a href="https://search.mattyflix.com" class="rounded-2xl border border-mf-border bg-mf-surface p-5 hover:border-mf-accentSoft"><div class="font-extrabold">Make a request</div><div class="text-sm text-mf-sub">On Mattyflix Search</div></a>
+      <a href="https://donate.mattyflix.com" class="rounded-2xl bg-mf-accent p-5 hover:bg-mf-accentDark"><div class="font-extrabold">Donate</div><div class="text-sm text-white/85">Help cover drives and power</div></a>
+    </section>
+  </main>
+
+  <footer class="border-t border-mf-border/70 py-8 text-center text-sm text-mf-muted">
+    <a href="/" class="hover:text-white">Mattyflix</a> &middot; Plex and the Plex logo are trademarks of Plex, Inc.
+  </footer>
+</body>
+</html>
