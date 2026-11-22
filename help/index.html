@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting the most out of Mattyflix - Mattyflix</title>
+  <meta name="description" content="The Plex settings that give you the best picture, sound and subtitles on Mattyflix, and what to do when something isn't right.">
+  <link rel="icon" href="/assets/logo-96.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class'],
+      theme: { extend: {
+        fontFamily: { sans: ['Nunito', 'ui-sans-serif', 'system-ui'] },
+        colors: { mf: { bg: '#171a1f', surface: '#1f242d', border: '#2f3541', text: '#ffffff', sub: '#d5dce8', muted: '#a7b0c0', accent: '#3a4da1', accentDark: '#2e3e82', accentSoft: '#8fa2ff' } }
+      } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 5.5rem; }
+    .prose p { margin-top: 1rem; }
+    .prose p:first-child { margin-top: 0; }
+    .prose ul, .prose ol { margin-top: .75rem; padding-left: 1.25rem; }
+    .prose ul { list-style: disc; }
+    .prose ol { list-style: decimal; }
+    .prose li { margin-top: .4rem; }
+    .prose li::marker { color: #8fa2ff; }
+    .prose b, .prose strong { color: #ffffff; }
+    .prose a { color: #8fa2ff; text-decoration: underline; text-underline-offset: 2px; }
+    .path { display: inline-block; padding: .05rem .45rem; border: 1px solid #2f3541; border-radius: .4rem; background: #171a1f; color: #ffffff; font-size: .92em; white-space: normal; }
+    .device { border-top: 1px solid #2f3541; padding-top: 1.1rem; margin-top: 1.1rem; }
+    .device:first-of-type { border-top: 0; padding-top: 0; margin-top: 1.4rem; }
+    .device h3 { color: #ffffff; font-weight: 800; }
+    .tip { margin-top: 1rem; padding: .85rem 1rem; border-left: 3px solid #8fa2ff; background: rgba(143,162,255,.07); border-radius: 0 .6rem .6rem 0; }
+    .prose ul.check { padding-left: 0; }
+    .check li { list-style: none; position: relative; padding-left: 1.6rem; }
+    .check li::before { content: ""; position: absolute; left: 0; top: .35rem; width: .95rem; height: .95rem; border: 2px solid #8fa2ff; border-radius: .25rem; }
+  </style>
+</head>
+<body class="bg-mf-bg text-mf-text antialiased selection:bg-mf-accent/30">
+  <header class="sticky top-0 z-50 border-b border-mf-border/70 bg-mf-bg/90 backdrop-blur">
+    <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/assets/logo-96.png" alt="" class="h-9 w-9 rounded-xl border border-mf-border" width="96" height="96">
+        <span class="text-lg font-extrabold tracking-tight">Mattyflix</span>
+      </a>
+      <a href="/members/" class="rounded-xl border border-mf-border px-4 py-2 text-sm font-semibold hover:bg-white/5">Member links</a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-5 pb-20">
+    <section class="pb-8 pt-12">
+      <h1 class="text-3xl font-black sm:text-4xl">Getting the most out of Mattyflix</h1>
+      <p class="mt-3 text-lg text-mf-sub">A few Plex settings make a big difference to picture, sound and subtitles. Most take a minute to change, and you only need to do it once per device.</p>
+      <nav class="mt-6 flex flex-wrap gap-2 text-sm font-semibold" aria-label="On this page">
+        <a href="#checklist" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">Quick checklist</a>
+        <a href="#quality" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">Picture quality</a>
+        <a href="#languages" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">Audio and subtitles</a>
+        <a href="#sound" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">Surround sound</a>
+        <a href="#extras" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">Nice extras</a>
+        <a href="#troubleshooting" class="rounded-full border border-mf-border px-3 py-1.5 text-mf-sub hover:border-mf-accentSoft hover:text-white">When something's wrong</a>
+      </nav>
+    </section>
+
+    <section id="checklist">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">Quick checklist</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <ul class="check">
+          <li>Streaming quality set to <b>Original</b> or <b>Maximum</b>, with automatic adjusting turned <b>off</b>.</li>
+          <li>Your <b>audio and subtitle languages</b> set once on your Plex account, so every device picks the right tracks.</li>
+          <li>Your TV or streaming box on a <b>wired connection</b> if you watch in 4K.</li>
+          <li><b>Surround sound passthrough</b> turned on if you have a soundbar or receiver.</li>
+          <li>Picking a <b>text subtitle track</b> (SRT) when there's a choice. It's easier on the server.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="quality" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">Picture quality</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p>Out of the box, Plex often plays things at a lower quality than you'd expect, especially away from home. Setting quality to <b>Original</b> (or <b>Maximum</b>) tells Plex to send the file exactly as it is, with no loss in picture. It's also easier on our server, since nothing has to be converted on the fly.</p>
+        <p>Every app labels these settings a little differently, so look for the closest match on your device.</p>
+
+        <div class="device">
+          <h3>Smart TVs, Android TV, Google TV and Fire TV</h3>
+          <p>Open <span class="path">Settings</span> (or your profile picture &rarr; <span class="path">Settings</span>), then <span class="path">Video Quality</span>:</p>
+          <ul>
+            <li><b>Adjust Automatically</b> (or Auto): <b>Off</b></li>
+            <li><b>Home Streaming</b>: <b>Maximum</b> or <b>Original</b></li>
+            <li><b>Remote Streaming</b>: <b>Maximum</b> or <b>Original</b>. Mattyflix always counts as remote for you, since it isn't in your home, so this is the one that matters most.</li>
+          </ul>
+        </div>
+
+        <div class="device">
+          <h3>Roku</h3>
+          <p>Select your profile name (top left) &rarr; <span class="path">Settings</span> &rarr; <span class="path">Videos</span>:</p>
+          <ul>
+            <li><b>Remote Quality</b> and <b>Local Quality</b>: <b>Original</b></li>
+            <li><b>Direct Play</b>: <b>Auto</b> or <b>Enabled</b></li>
+            <li><b>Allow Direct Stream</b>: <b>Enabled</b></li>
+          </ul>
+        </div>
+
+        <div class="device">
+          <h3>Apple TV, iPhone, iPad and Android phones</h3>
+          <p>Open your profile &rarr; <span class="path">Settings</span> &rarr; <span class="path">Quality</span> (sometimes under <span class="path">Video</span>):</p>
+          <ul>
+            <li><b>Remote Streaming</b>: <b>Original</b> or <b>Maximum</b></li>
+            <li>On phones, you might set a lower quality for <b>Cellular</b> to save your data plan, and keep Wi-Fi at Original.</li>
+          </ul>
+        </div>
+
+        <div class="device">
+          <h3>In a web browser (app.plex.tv)</h3>
+          <p>Click the <span class="path">Settings</span> wrench (top right) &rarr; <span class="path">Quality</span> under Plex Web, then <b>Save Changes</b>:</p>
+          <ul>
+            <li><b>Automatically Adjust Quality</b>: <b>Off</b></li>
+            <li><b>Remote Streaming / Video Quality</b>: <b>Maximum</b></li>
+            <li><b>Play smaller videos at original quality</b>: <b>On</b></li>
+          </ul>
+        </div>
+
+        <div class="tip"><b>Buffering after changing this?</b> Original needs a fast, steady connection, especially for 4K. Drop the quality a step (for example to <b>20 Mbps 1080p</b> or <b>8 Mbps 1080p</b>), or turn automatic adjusting back on. You can also change quality for just the current video: during playback, open the settings cog and pick a different quality.</div>
+        <p>Some movies have more than one version, like 4K and 1080p. Plex picks the best one for your setup, but you can choose with <span class="path">More (&middot;&middot;&middot;)</span> &rarr; <span class="path">Play Version</span> on the movie's page.</p>
+      </div>
+    </section>
+
+    <section id="languages" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">Audio and subtitles</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p>Your language preferences live on your <b>Plex account</b>, not on each device, so you only set them once. The easiest place is a web browser: sign in at <a href="https://app.plex.tv">app.plex.tv</a> &rarr; <span class="path">Settings</span> &rarr; <span class="path">Account</span>, and look for the <b>Languages</b> or <b>Audio &amp; Subtitles</b> section.</p>
+        <ul>
+          <li><b>Automatically select audio and subtitle tracks</b>: <b>On</b></li>
+          <li><b>Preferred audio language</b>: your language, for example English. This stops movies starting in a dubbed or commentary track.</li>
+          <li><b>Auto-select subtitle mode</b>: pick what suits you:
+            <ul>
+              <li><b>Shown with foreign audio</b>: subtitles appear automatically when the audio isn't in your language. Great for anime and foreign films.</li>
+              <li><b>Always enabled</b>: subtitles on for everything.</li>
+              <li><b>Manually selected</b>: subtitles only when you turn them on.</li>
+            </ul>
+          </li>
+          <li><b>Preferred subtitle language</b>: your language.</li>
+        </ul>
+        <div class="tip"><b>Subtitles causing buffering?</b> Subtitles copied from Blu-rays (listed as <b>PGS</b>) are images, and many devices can't draw them, so our server has to bake them into the video as it plays. If there's an <b>SRT</b> track in the same language, pick that one instead.</div>
+        <p>You can always switch tracks for the current video from the player's audio and subtitle menu. Plex remembers your choice for that show.</p>
+      </div>
+    </section>
+
+    <section id="sound" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">Surround sound</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <p>Many movies on Mattyflix have 5.1 or 7.1 surround audio, including Dolby and DTS. If you have a soundbar or receiver, let it handle that audio directly:</p>
+        <ul>
+          <li>In the Plex app on your TV or streaming box, open <span class="path">Settings</span> &rarr; <span class="path">Audio</span> and turn <b>Passthrough</b> (or <b>Audio passthrough</b>) on, or set it to the formats your equipment supports.</li>
+          <li>If you get silence or crackling afterwards, your setup doesn't support that format. Set passthrough back to <b>Off</b> or <b>Auto</b>.</li>
+        </ul>
+        <p>No soundbar? Leave passthrough off, and Plex will mix the audio down for your TV speakers.</p>
+      </div>
+    </section>
+
+    <section id="extras" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">Nice extras</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <ul>
+          <li><b>Skip intros and credits.</b> Watch for the <b>Skip Intro</b> and <b>Skip Credits</b> buttons. Some apps can skip them automatically under <span class="path">Settings</span> &rarr; <span class="path">Experience</span> or <span class="path">Playback</span>.</li>
+          <li><b>Auto-play the next episode.</b> Look for <b>Auto Play</b> in the app's playback settings.</li>
+          <li><b>No trailers before movies.</b> If movies start with trailers, turn off <b>Cinema Trailers</b> in the app's settings.</li>
+          <li><b>Keep Mattyflix front and center.</b> On the Home screen, <b>Trending on Mattyflix</b> shows what everyone's watching this week. You can pin Mattyflix's libraries to your sidebar from the library list.</li>
+          <li><b>Request anything that's missing</b> on <a href="https://search.mattyflix.com">Mattyflix Search</a>, or turn on Watchlist auto-requests there so anything you add to your Plex Watchlist gets requested for you.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="troubleshooting" class="mt-12">
+      <h2 class="mb-3 text-sm font-extrabold uppercase tracking-wider text-mf-muted">When something's wrong</h2>
+      <div class="prose rounded-2xl border border-mf-border bg-mf-surface p-6 text-mf-sub">
+        <ol>
+          <li><b>Buffering or stuttering:</b> lower the quality for that video, switch to an SRT subtitle track (or turn subtitles off to test), and use a wired connection for 4K if you can.</li>
+          <li><b>Nothing will play, or Mattyflix is missing:</b> make sure you're signed in to the Plex account you accepted your invite with. Then check the <a href="https://home.mattyflix.com">server dashboard</a> or the Discord to see whether something's going on.</li>
+          <li><b>Wrong language or no subtitles:</b> pick the track from the player's menu, and set your account defaults as described above.</li>
+          <li><b>"Too many streams" or a stream limit message:</b> each account can play up to 3 streams at once. Stop one on another device and try again.</li>
+          <li><b>Still stuck?</b> Ask in the <a href="https://discord.gg/YFapuevaD8">Discord</a>. Tell us what you were watching, on which device, and roughly when, so we can look it up.</li>
+        </ol>
+      </div>
+    </section>
+
+    <p class="mt-10 text-sm text-mf-muted">Some quality tips here were adapted from Chris Majestic's <a class="text-mf-accentSoft underline underline-offset-2" href="https://chrismajestic.com/hometheater/optimizing-your-plex-settings/">Optimizing your Plex settings</a> guide. Plex menus change from time to time, so if a setting has moved, look for the closest match in your app.</p>
+  </main>
+
+  <footer class="border-t border-mf-border/70 py-8 text-center text-sm text-mf-muted">
+    <a href="/" class="hover:text-white">Mattyflix</a> &middot; Plex and the Plex logo are trademarks of Plex, Inc.
+  </footer>
+</body>
+</html>
